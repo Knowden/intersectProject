@@ -2,6 +2,7 @@
 #include "CppUnitTest.h"
 #include <vector>
 #include <string>
+#include <set>
 #include "../intersect/Point.h"
 #include "../intersect/Line.h"
 #include "../intersect/Circle.h"
@@ -27,7 +28,7 @@ public:
 		Line line(input);
 
 		Assert::AreEqual(0.0, line.k);
-		Assert::AreEqual(1.0, line.k);
+		Assert::AreEqual(1.0, line.b);
 	}
 
 	TEST_METHOD(TestInitWithKEqualInf) {
@@ -62,8 +63,8 @@ public:
 		Line line(-1, 10);
 		Circle circle("C 0 0 1");
 
-		std::vector<Point*> result = line.get_intersection_with(circle);
-
+		std::vector<Point> result = line.get_intersection_with(circle);
+		
 		Assert::AreEqual(0, (int)result.size());
 	}
 
@@ -71,16 +72,17 @@ public:
 		Line line(-1, sqrt(2));
 		Circle circle("C 0 0 1");
 
-		std::vector<Point*> result = line.get_intersection_with(circle);
+		std::vector<Point> result = line.get_intersection_with(circle);
 		
-		Assert::AreEqual(1, (int)result.size());
+		std::set<Point> set(result.begin(), result.end());
+		Assert::AreEqual(1, (int)set.size());
 	}
 
 	TEST_METHOD(TestLineIntersectWithCircle) {
 		Line line(-1, 1);
 		Circle circle("C 0 0 1");
 
-		std::vector<Point*> result = line.get_intersection_with(circle);
+		std::vector<Point> result = line.get_intersection_with(circle);
 
 		Assert::AreEqual(2, (int)result.size());
 	}
