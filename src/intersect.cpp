@@ -24,7 +24,7 @@ void write_result_to_output_file(string output_file_path, int result) {
 	out.close();
 }
 
-int main(int argc, char** argv) {
+int main(int argc, const char** argv) {
 	Solution s;
 	string input_file_path = string(argv[2]);
 	string output_file_path = string(argv[4]);

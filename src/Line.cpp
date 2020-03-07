@@ -7,8 +7,8 @@ using namespace std;
 
 Line::Line(const string& ori_input) {
     vector<string> infos = StringUtil::split(StringUtil::trim(ori_input), " ");
-    Point p1(stod(infos.at(1)), stod(infos.at(2)));
-    Point p2(stod(infos.at(3)), stod(infos.at(4)));
+    const Point p1(stod(infos.at(1)), stod(infos.at(2)));
+    const Point p2(stod(infos.at(3)), stod(infos.at(4)));
 
     double k = 0;
     double b = 0;
