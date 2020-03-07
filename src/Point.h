@@ -1,4 +1,8 @@
-#pragma once
+#ifndef POINT_H
+#define POINT_H
+
+#include <string>
+#include <vector>
 
 class Line;
 
@@ -13,3 +17,4 @@ public:
 	double getDistanceToLine(const Line& line);
 };
 
+#endif // !POINT_H

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LINE_H
+#define LINE_H
 
 #include <string>
 #include <vector>
@@ -18,7 +19,8 @@ public:
 	Line(const std::string& ori_input);
 	Line(double k, double b);
 
-	Point* get_intersection_with(const Line& another);
-	std::vector<Point*> get_intersection_with(const Circle& another);
+	Point* get_intersection_with(Line& another);
+	std::vector<Point> get_intersection_with(Circle& another);
 };
 
+#endif // !LINE_H

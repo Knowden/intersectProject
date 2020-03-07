@@ -1,39 +1,13 @@
 #include "Circle.h"
 #include "Line.h"
 #include "Point.h"
+#include "StringUtil.h"
 
 using namespace std;
 
-string trim(string s) {
-    if (s.empty()) {
-        return s;
-    }
-
-    s.erase(0, s.find_first_not_of(" "));
-    s.erase(s.find_last_not_of(" ") + 1);
-    return s;
-}
-
-vector<string> split(const std::string& s, const std::string& c) {
-    vector<string> result;
-
-    std::string::size_type pos1, pos2;
-    pos2 = s.find(c);
-    pos1 = 0;
-    while (std::string::npos != pos2) {
-        result.push_back(s.substr(pos1, pos2 - pos1));
-
-        pos1 = pos2 + c.size();
-        pos2 = s.find(c, pos1);
-    }
-    if (pos1 != s.length())
-        result.push_back(s.substr(pos1));
-
-    return result;
-}
 
 Circle::Circle(const string& input) {
-    vector<string> infos = split(trim(input), " ");
+    vector<string> infos = StringUtil::split(StringUtil::trim(input), " ");
     Circle(stod(infos.at(1)), stod(infos.at(2)), stod(infos.at(3)));
 }
 
@@ -42,7 +16,7 @@ Circle::Circle(double x, double y, double r) {
     this->r = r;
 }
 
-vector<Point> Circle::getIntersectionWith(const Line& line) {
+vector<Point> Circle::getIntersectionWith(Line& line) {
     vector<Point> result;
 
     double distance = this->center->getDistanceToLine(line);
@@ -57,7 +31,7 @@ vector<Point> Circle::getIntersectionWith(const Line& line) {
     return calculateIntersectionWithNormalLine(line);
 }
 
-vector<Point> Circle::calculatePointsAtX(int x) {
+vector<Point> Circle::calculatePointsAtX(double x) {
    vector<Point> result;
 
    double common_part = sqrt(pow(r, 2) - pow(x - center->x, 2));
@@ -70,11 +44,11 @@ vector<Point> Circle::calculatePointsAtX(int x) {
    return result;
 }
 
-double calulateYOfXInLine(const Line& line, double x) {
+double calulateYOfXInLine(Line& line, double x) {
     return line.k * x + line.b;
 }
 
-vector<Point> Circle::calculateIntersectionWithNormalLine(const Line& line) {
+vector<Point> Circle::calculateIntersectionWithNormalLine(Line& line) {
     vector<Point> result;
 
     double t = line.b - center->y;
@@ -107,7 +81,7 @@ Line getCommonLineBetweenCricles(const Circle& c1, const Circle c2) {
     return Line(-a / b, -c / b);
 }
 
-vector<Point> Circle::getIntersectionWith(const Circle& another) {
+vector<Point> Circle::getIntersectionWith(Circle& another) {
     vector<Point> result;
 
     double distance = calculateDistanceBetweenPoints(*center, *another.center);
@@ -116,6 +90,6 @@ vector<Point> Circle::getIntersectionWith(const Circle& another) {
         return result;
     }
 
-    Line common_line = getCommonLineBetweenCricles(*center, *another.center);
+    Line common_line = getCommonLineBetweenCricles(*this, another);
     return getIntersectionWith(common_line);
 }

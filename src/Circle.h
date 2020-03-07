@@ -1,15 +1,16 @@
-#pragma once
+#ifndef CIRCLE_H
+#define CIRCLE_H
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class Point;
 class Line;
 
 class Circle {
 private:
-	std::vector<Point> calculatePointsAtX(int x);
-	std::vector<Point> calculateIntersectionWithNormalLine(const Line& line);
+	std::vector<Point> calculatePointsAtX(double x);
+	std::vector<Point> calculateIntersectionWithNormalLine(Line& line);
 
 public:
 	Point* center;
@@ -19,7 +20,8 @@ public:
 	Circle(double x, double y, double r);
 
 
-	std::vector<Point> getIntersectionWith(const Line& line);
-	std::vector<Point> getIntersectionWith(const Circle& another);
+	std::vector<Point> getIntersectionWith(Line& line);
+	std::vector<Point> getIntersectionWith(Circle& another);
 };
 
+#endif // !CIRCLE_H
