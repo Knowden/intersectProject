@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include <set>
+#include  <unordered_set>
 #include "../intersect/Point.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -10,7 +10,7 @@ namespace PointTest {
 public:
 
 	TEST_METHOD(TestRemoveDup) {
-		auto* set = new std::set<Point>();
+		auto* set = new std::unordered_set<Point>();
 		Point p1(1, 1);
 		Point p2(1, 1);
 
@@ -21,7 +21,7 @@ public:
 	}
 
 	TEST_METHOD(TestSaveUniq) {
-		auto* set = new std::set<Point>();
+		auto* set = new std::unordered_set<Point>();
 
 		Point p1(1, 1);
 		Point p2(1, 2);

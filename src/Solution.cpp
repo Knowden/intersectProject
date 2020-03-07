@@ -18,7 +18,7 @@ void Solution::add_component(std::string ori_input) {
 }
 
 int Solution::count_result() {
-	result_set = *new set<Point>();
+	result_set = *new unordered_set<Point>();
 	count_line_with_line();
 	count_circle_with_circle();
 	count_line_with_circle();

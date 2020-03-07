@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 #include <string>
-#include <set>
+#include <unordered_set>
 
 #include "Line.h"
 #include "Circle.h"
@@ -14,7 +14,7 @@ class Solution {
 private:
 	std::map<double, std::vector<Line>> line_map;
 	std::vector<Circle> circle_list;
-	std::set<Point> result_set;
+	std::unordered_set<Point> result_set;
 
 	void count_line_with_line();
 	void count_circle_with_circle();
