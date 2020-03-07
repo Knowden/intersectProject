@@ -21,7 +21,7 @@ Line::Line(const string& ori_input) {
         b = p1.y - k * p1.x;
     }
 
-    Line(k, b);
+    this->Line::Line(k, b);
 }
 
 Line::Line(double k, double b) {

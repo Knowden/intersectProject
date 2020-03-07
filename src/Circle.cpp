@@ -8,7 +8,7 @@ using namespace std;
 
 Circle::Circle(const string& input) {
     vector<string> infos = StringUtil::split(StringUtil::trim(input), " ");
-    Circle(stod(infos.at(1)), stod(infos.at(2)), stod(infos.at(3)));
+    this->Circle::Circle(stod(infos.at(1)), stod(infos.at(2)), stod(infos.at(3)));
 }
 
 Circle::Circle(double x, double y, double r) {
@@ -73,6 +73,10 @@ double calculateDistanceBetweenPoints(const Point& point1, const Point& point2) 
 }
 
 Line getCommonLineBetweenCricles(const Circle& c1, const Circle c2) {
+    if (c1.center->y == c2.center->y) {
+        return Line(INT_MAX, ((pow(c1.r, 2) - pow(c2.r, 2)) / (c2.center->x - c1.center->x) + c1.center->x + c2.center->x) / 2);
+    }
+
     double a = 2 * (c2.center->x - c1.center->x);
     double b = 2 * (c2.center->y - c1.center->y);
     double c = (pow(c1.center->x, 2) + pow(c1.center->y, 2) - pow(c1.r, 2)) -
