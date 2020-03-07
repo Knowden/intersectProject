@@ -1,11 +1,10 @@
 #pragma once
 
 class Point {
-private:
+public:
 	double x;
 	double y;
 
-public:
 	Point(double x, double y);
 	bool operator<(const Point& another)const;
 };

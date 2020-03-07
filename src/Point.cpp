@@ -9,5 +9,9 @@ bool Point::operator<(const Point& another) const {
 	if (this->x == another.x && this->y == another.y) {
 		return false;
 	}
-	return true;
+	
+	if (this->x == another.x) {
+		return this->y < another.y;
+	}
+	return this->x < another.x;
 }
