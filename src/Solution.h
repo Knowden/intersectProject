@@ -1,7 +1,7 @@
 #ifndef SOLUTION_H
 #define SOLUTION_H
 
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <string>
 #include <unordered_set>
@@ -12,7 +12,7 @@
 
 class Solution {
 private:
-	std::map<double, std::vector<Line>> line_map;
+	std::unordered_map<double, std::vector<Line>> line_map;
 	std::vector<Circle> circle_list;
 	std::unordered_set<Point> result_set;
 
@@ -21,6 +21,8 @@ private:
 	void count_line_with_circle();
 
 public:
+	Solution();
+
 	void add_component(std::string ori_input);
 	int count_result();
 };

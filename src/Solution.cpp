@@ -3,6 +3,10 @@
 
 using namespace std;
 
+Solution::Solution() {
+	this->line_map.max_load_factor(0.6);
+}
+
 void Solution::add_component(std::string ori_input) {
 	if (StringUtil::trim(ori_input).at(0) == 'L') {
 		Line line(ori_input);
@@ -18,7 +22,8 @@ void Solution::add_component(std::string ori_input) {
 }
 
 int Solution::count_result() {
-	result_set = *new unordered_set<Point>();
+	result_set = *new unordered_set<Point>(1000000);
+	result_set.max_load_factor(0.6);
 	count_line_with_line();
 	count_circle_with_circle();
 	count_line_with_circle();
@@ -26,10 +31,10 @@ int Solution::count_result() {
 }
 
 void Solution::count_line_with_line() {
-	for (map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
-		map<double, vector<Line>>::iterator temp = i;
+	for (unordered_map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
+		unordered_map<double, vector<Line>>::iterator temp = i;
 		temp++;
-		for (map<double, vector<Line>>::iterator j = temp; j != line_map.end(); j++) {
+		for (unordered_map<double, vector<Line>>::iterator j = temp; j != line_map.end(); j++) {
 			vector<Line> line_list1 = i->second;
 			vector<Line> line_list2 = j->second;
 
@@ -57,7 +62,7 @@ void Solution::count_circle_with_circle() {
 }
 
 void Solution::count_line_with_circle() {
-	for (map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
+	for (unordered_map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
 		vector<Line> line_list = i->second;
 		for (Line line : line_list) {
 			for (Circle circle : circle_list) {
