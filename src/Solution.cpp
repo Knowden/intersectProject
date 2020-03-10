@@ -4,7 +4,7 @@
 using namespace std;
 
 Solution::Solution() {
-	this->line_map.max_load_factor(0.6);
+	this->line_map.max_load_factor(0.6f);
 }
 
 void Solution::add_component(std::string ori_input) {
@@ -23,7 +23,7 @@ void Solution::add_component(std::string ori_input) {
 
 int Solution::count_result() {
 	result_set = *new unordered_set<Point>(1000000);
-	result_set.max_load_factor(0.6);
+	result_set.max_load_factor(0.6f);
 	count_line_with_line();
 	count_circle_with_circle();
 	count_line_with_circle();
