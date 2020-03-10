@@ -13,11 +13,11 @@ class Circle;
 */
 class Line {
 public:
-	double k; // Ð±ÂÊ
-	double b; // ½Ø¾à
+	long double k; // Ð±ÂÊ
+	long double b; // ½Ø¾à
 
 	Line(const std::string& ori_input);
-	Line(double k, double b);
+	Line(long double k, long double b);
 
 	Point* get_intersection_with(Line& another);
 	std::vector<Point> get_intersection_with(Circle& another);

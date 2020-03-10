@@ -7,7 +7,7 @@
 
 class PointContainer {
 private:
-	std::unordered_map<double, std::unordered_set<double>> data;
+	std::unordered_map<long double, std::unordered_set<long double>> data;
 
 public:
 	void add_point(Point p);

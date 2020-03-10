@@ -9,15 +9,15 @@ class Line;
 
 class Circle {
 private:
-	std::vector<Point> calculatePointsAtX(double x);
+	std::vector<Point> calculatePointsAtX(long double x);
 	std::vector<Point> calculateIntersectionWithNormalLine(Line& line);
 
 public:
 	Point* center;
-	double r;
+	long double r;
 
 	Circle(const std::string& input);
-	Circle(double x, double y, double r);
+	Circle(long double x, long double y, long double r);
 
 
 	std::vector<Point> getIntersectionWith(Line& line);

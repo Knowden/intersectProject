@@ -12,7 +12,7 @@
 
 class Solution {
 private:
-	std::unordered_map<double, std::vector<Line>> line_map;
+	std::unordered_map<long double, std::vector<Line>> line_map;
 	std::vector<Circle> circle_list;
 	std::unordered_set<Point> result_set;
 

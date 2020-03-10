@@ -10,8 +10,8 @@ Line::Line(const string& ori_input) {
     const Point p1(stod(infos.at(1)), stod(infos.at(2)));
     const Point p2(stod(infos.at(3)), stod(infos.at(4)));
 
-    double k = 0;
-    double b = 0;
+    long double k = 0;
+    long double b = 0;
     if (p1.x == p2.x) {
         k = INT_MAX;
         b = p1.x;
@@ -24,7 +24,7 @@ Line::Line(const string& ori_input) {
     this->Line::Line(k, b);
 }
 
-Line::Line(double k, double b) {
+Line::Line(long double k, long double b) {
     this->k = k;
     this->b = b;
 }
@@ -41,8 +41,8 @@ Point* Line::get_intersection_with(Line& another) {
         return new Point(another.b, this->k * another.b + this->b);
     }
     else {
-        double x = (another.b - this->b) / (this->k - another.k);
-        double y = this->k * x + this->b;
+        long double x = (another.b - this->b) / (this->k - another.k);
+        long double y = this->k * x + this->b;
 
         return new Point(x, y);
     }

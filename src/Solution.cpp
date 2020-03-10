@@ -31,10 +31,10 @@ int Solution::count_result() {
 }
 
 void Solution::count_line_with_line() {
-	for (unordered_map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
-		unordered_map<double, vector<Line>>::iterator temp = i;
+	for (unordered_map<long double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
+		unordered_map<long double, vector<Line>>::iterator temp = i;
 		temp++;
-		for (unordered_map<double, vector<Line>>::iterator j = temp; j != line_map.end(); j++) {
+		for (unordered_map<long double, vector<Line>>::iterator j = temp; j != line_map.end(); j++) {
 			vector<Line> line_list1 = i->second;
 			vector<Line> line_list2 = j->second;
 
@@ -62,7 +62,7 @@ void Solution::count_circle_with_circle() {
 }
 
 void Solution::count_line_with_circle() {
-	for (unordered_map<double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
+	for (unordered_map<long double, vector<Line>>::iterator i = line_map.begin(); i != line_map.end(); i++) {
 		vector<Line> line_list = i->second;
 		for (Line line : line_list) {
 			for (Circle circle : circle_list) {

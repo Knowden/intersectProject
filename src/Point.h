@@ -8,20 +8,20 @@ class Line;
 
 class Point {
 public:
-	double x;
-	double y;
+	long double x;
+	long double y;
 
-	Point(double x, double y);
+	Point(long double x, long double y);
 	bool operator<(const Point& another)const;
 
-	double getDistanceToLine(const Line& line);
+	long double getDistanceToLine(const Line& line);
 };
 
 namespace std {
     template <>
     struct hash<Point> {
         size_t operator()(Point const& p) const noexcept {
-            return ((51 + std::hash<double>()(p.x)) * 51 + std::hash<double>()(p.y));
+            return ((51 + std::hash<long double>()(p.x)) * 51 + std::hash<long double>()(p.y));
         }
     };
 

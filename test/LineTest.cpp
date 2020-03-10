@@ -18,8 +18,8 @@ public:
 
 		Line line(input);
 
-		Assert::AreEqual(1.0, line.k);
-		Assert::AreEqual(0.0, line.b);
+		Assert::AreEqual(1.0, (double)line.k);
+		Assert::AreEqual(0.0, (double)line.b);
 	}
 
 	TEST_METHOD(TestInitWithKEqual0) {
@@ -27,8 +27,8 @@ public:
 
 		Line line(input);
 
-		Assert::AreEqual(0.0, line.k);
-		Assert::AreEqual(1.0, line.b);
+		Assert::AreEqual(0.0, (double)line.k);
+		Assert::AreEqual(1.0, (double)line.b);
 	}
 
 	TEST_METHOD(TestInitWithKEqualInf) {
@@ -36,8 +36,8 @@ public:
 
 		Line line(input);
 
-		Assert::AreEqual((double)INT_MAX, line.k);
-		Assert::AreEqual(1.0, line.b);
+		Assert::AreEqual((double)INT_MAX, (double)line.k);
+		Assert::AreEqual(1.0, (double)line.b);
 	}
 
 	TEST_METHOD(TestLineParallelWithAnother) {
@@ -55,8 +55,8 @@ public:
 
 		Point* result = line1.get_intersection_with(line2);
 
-		Assert::AreEqual(0.0, result->x);
-		Assert::AreEqual(0.0, result->y);
+		Assert::AreEqual(0.0, (double)result->x);
+		Assert::AreEqual(0.0, (double)result->y);
 	}
 
 	TEST_METHOD(TestLinePartFromCricle) {
